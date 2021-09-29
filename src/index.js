@@ -3,18 +3,22 @@ import logo from './images/logo.png';
 
 const layoutController = (()=> {
 
-    const content = document.getElementById('content');
+    const mainContent = document.getElementById('content');
     let welcomeBtn, aboutUsBtn, menuBtn, contactUsBtn;
     let headerDiv;
+    let content;
     const ACTIVE_BUTTON_CLASS = 'active';
+    const RESTAURANT_NAME = `Mama Lucia's Restaurant`;
     
-    const buildHeader = () => {
+    const buildSite = () => {
         headerDiv = document.createElement('div');
         headerDiv.classList.add('header');
-        content.appendChild(headerDiv);
+        mainContent.appendChild(headerDiv);
 
         buildNavBar();
         buildHeaderText();
+        buildcontentPane();
+        buildFooter();
 
 
     }
@@ -59,13 +63,34 @@ const layoutController = (()=> {
         headerContainer.appendChild(headerTextDiv);
 
         let h1Text = document.createElement('h1');
-        h1Text.textContent = `Mama Lucia's Restaurant`
+        h1Text.textContent = RESTAURANT_NAME;
         headerTextDiv.appendChild(h1Text);
 
-        let h2Text = document.createElement('h2');
-        h2Text.textContent = `Fine Italian Cuisine`;
-        headerTextDiv.appendChild(h2Text);
+        let h3Text = document.createElement('h3');
+        h3Text.textContent = `Fine Italian Cuisine`;
+        headerTextDiv.appendChild(h3Text);
 
+    }
+
+    const buildcontentPane = () => {
+        content = document.createElement('div');
+        content.classList.add('content');
+        mainContent.appendChild(content);
+    }
+
+    const buildFooter = () => {
+        let footerDiv = document.createElement('div');
+        footerDiv.classList.add('footer');
+        let footerHeaderText = document.createElement('h2');
+        footerHeaderText.textContent = 'Family Owned and Operated since 2003.';
+        footerDiv.appendChild(footerHeaderText);
+        
+        let copyrightText = document.createElement('p');
+        copyrightText.textContent = `Copyright © Mama Lucia's Restaurant. All rights reserved.`;
+        copyrightText.classList.add('copyright');
+        footerDiv.appendChild(copyrightText);
+        
+        mainContent.appendChild(footerDiv);
     }
 
     const setActiveNav = (activeBtn) => {
@@ -78,8 +103,8 @@ const layoutController = (()=> {
         });
     }
 
-    return {buildHeader}
+    return {buildSite}
 
 })();
 
-layoutController.buildHeader();
+layoutController.buildSite();

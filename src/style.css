@@ -9,33 +9,41 @@
 }
 
 html {
+    height: 100%;
+    width: 100%;
     --primary-color: #500c14;
     --header-primary-color: #cfaf6a;
     --header-secondary-color: #f7fad3;
-    --border-color: #ddc5a1;
+    --secondary-color: #ddc5a1;
     --button-border-color: #c69e48;
     --button-background: linear-gradient(to bottom,rgba(229,200,137,1) 1%,rgba(188,145,52,1) 90%,rgba(229,200,137,1) 100%);
     --button-color: rgb(64, 46, 6);
     --nav-height: 50px;
 
      background-color: var(--primary-color);
-    background-image: url('images/bg-img.jpg'); 
-
+    background-image: url('images/bg-img.jpg'), linear-gradient(to bottom, var(--primary-color) 0%,#211203 100%); 
     background-repeat: repeat-x;
-    background-size: auto 300px;
-    background-position-y: var(--nav-height);
+    /* background-size: auto 300px; */
+    /* background-position-y: var(--nav-height); */
     
 }
 
-@media (max-width: 700px) {
-    html {
-        background-image: none;
-    }
-}
+
 
 body {
     margin: 0;
     font-family: 'Alice', serif;
+    color: var(--secondary-color);
+    height: 100%;
+    width: 100%;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
 }
 
 .header ul {
@@ -52,13 +60,15 @@ body {
 }
 
 .header li {
-    font-size: 17px;
+    font-size: 23px;
+    text-align: center;
 }
 
 .header li:hover {
     color: var(--primary-color);
     text-decoration: underline;
     cursor:pointer;
+    font-weight: bold;
 }
 
 .header .active {
@@ -66,7 +76,7 @@ body {
     font-weight: bold;
 }
 
-.header h1, .header h2 {
+ h1, h2, h3, p {
     margin: 0;
     text-align: center;
 }
@@ -78,7 +88,14 @@ body {
     font-family: 'Great Vibes',cursive;
 }
 
- h2 {
+h2 {
+    font-size: 34px;
+    font-weight: 400;
+    color: var(--header-primary-color); 
+    font-family: 'Great Vibes',cursive;
+}
+
+ h3 {
      font-size: 21px;
     color: var(--header-secondary-color);
     font-weight: 400;
@@ -97,4 +114,34 @@ body {
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+}
+
+.content {
+    flex: 1;
+}
+
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px;
+}
+
+.copyright {
+    font-size: 13px;
+}
+
+@media (max-width: 700px) {
+    html {
+        background-image: none;
+    }
+    .header ul {
+        gap: 0;
+        justify-content: space-evenly;
+    }
+    .header li {
+        font-size: 17px;
+    }
 }
