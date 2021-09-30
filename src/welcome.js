@@ -34,6 +34,8 @@ export default function getWelcomePage() {
         hoursAddressDiv.appendChild(hourDiv);
     })
 
+    
+
 
     hoursAddressContainer.appendChild(getSymbolDiv(rightSymbol));
 
