@@ -1,6 +1,8 @@
 import './style.css'
 import logo from './images/logo.png';
 import getWelcomePage from './welcome.js';
+import getAboutUsPage from './about-us.js';
+import getContactPage from './contact.js';
 
 const layoutController = (()=> {
 
@@ -10,6 +12,10 @@ const layoutController = (()=> {
     let content;
     const ACTIVE_BUTTON_CLASS = 'active';
     const RESTAURANT_NAME = `Mama Lucia's Restaurant`;
+    const WELCOME_DATA = 'welcome';
+    const ABOUT_US_DATA = 'about';
+    const MENU_DATA = 'menu';
+    const CONTACT_DATA = 'contact';
     
     const buildSite = () => {
         headerDiv = document.createElement('div');
@@ -20,14 +26,34 @@ const layoutController = (()=> {
         buildHeaderText();
         buildcontentPane();
         buildFooter();
-        loadWelcomePage();
+        welcomeBtn.click();
          
 
     }
 
-    function loadWelcomePage() {
+
+
+    function loadPage(pageName) {
         removeAllChildNodes(content);
-        content.appendChild(getWelcomePage());
+        switch (pageName) {
+            case WELCOME_DATA:
+                content.appendChild(getWelcomePage());
+                setActiveNav(welcomeBtn);
+            break;
+            case ABOUT_US_DATA:
+                content.appendChild(getAboutUsPage());
+                setActiveNav(aboutUsBtn);
+            break;
+            case MENU_DATA:
+               // content.appendChild(getAboutUsPage());
+                setActiveNav(menuBtn);
+            break;
+            case CONTACT_DATA:
+                content.appendChild(getContactPage());
+                setActiveNav(contactUsBtn);
+            break;
+        }
+        
     }
 
     function removeAllChildNodes(parent) {
@@ -44,22 +70,30 @@ const layoutController = (()=> {
 
         welcomeBtn = document.createElement('li');
         welcomeBtn.textContent = 'Welcome'
+        welcomeBtn.dataset['name'] = WELCOME_DATA;
+        welcomeBtn.addEventListener('click', e => loadPage(e.target.dataset['name']));
         navList.appendChild(welcomeBtn);
     
         aboutUsBtn = document.createElement('li');
         aboutUsBtn.textContent = 'About Us'
-        navList.appendChild(aboutUsBtn);
+        aboutUsBtn.dataset['name'] = ABOUT_US_DATA;
+        aboutUsBtn.addEventListener('click', e => loadPage(e.target.dataset['name']));
+      //  navList.appendChild(aboutUsBtn);
 
         menuBtn = document.createElement('li');
         menuBtn.textContent = 'Menu'
+        menuBtn.dataset['name'] = MENU_DATA;
+        menuBtn.addEventListener('click', e => loadPage(e.target.dataset['name']));
         navList.appendChild(menuBtn);
 
         contactUsBtn = document.createElement('li');
         contactUsBtn.textContent = 'Contact Us'
+        contactUsBtn.dataset['name'] = CONTACT_DATA;
+        contactUsBtn.addEventListener('click', e => loadPage(e.target.dataset['name']));
         navList.appendChild(contactUsBtn);
 
         
-        setActiveNav(welcomeBtn);
+        
     }
 
     const buildHeaderText = () => {
