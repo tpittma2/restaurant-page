@@ -1,0 +1,15 @@
+{
+    "name": "Mama Lucia's Restautant",
+    "phone": "770-253-2501",
+    "email": "mamaluciasitalian@gmail.com",
+    "address": "236 Newnan Crossing Bypass",
+    "city": "Newnan",
+    "state": "GA",
+    "zip": "30263",
+    "hours": [
+        {"days": "Sunday", "hours": "Closed"},
+        {"days": "Monday", "hours": "11:00 a.m. to 3:30 p.m."},
+        {"days": "Tuesday - Saturday", "hours": "11:00 a.m. to 9:00 p.m."}
+    ]
+
+}

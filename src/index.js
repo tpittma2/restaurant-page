@@ -1,5 +1,6 @@
 import './style.css'
 import logo from './images/logo.png';
+import getWelcomePage from './welcome.js';
 
 const layoutController = (()=> {
 
@@ -19,8 +20,20 @@ const layoutController = (()=> {
         buildHeaderText();
         buildcontentPane();
         buildFooter();
+        loadWelcomePage();
+         
 
+    }
 
+    function loadWelcomePage() {
+        removeAllChildNodes(content);
+        content.appendChild(getWelcomePage());
+    }
+
+    function removeAllChildNodes(parent) {
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
     }
 
     const buildNavBar = ()=> {
@@ -45,6 +58,7 @@ const layoutController = (()=> {
         contactUsBtn.textContent = 'Contact Us'
         navList.appendChild(contactUsBtn);
 
+        
         setActiveNav(welcomeBtn);
     }
 
